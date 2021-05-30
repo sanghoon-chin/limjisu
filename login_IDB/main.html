@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1></h1>
+    <script>
+        const h1 = document.querySelector('h1');
+        let currentUser = null;
+        
+        const check = () => {
+            const cookies = document.cookie.split(';')
+            for(let data of cookies){
+                if(data.includes('username')){
+                    currentUser = data.split('=')[1]
+                    break;
+                }
+            }
+            if(currentUser){
+                return true
+            } else{
+                return false
+            }
+        }
+
+        const init = () => {
+            let isLoggedIn = check();
+            if(isLoggedIn){
+                h1.innerHTML = `안녕하세요 ${currentUser}님`
+            } else{
+                const a = document.createElement('a');
+                a.innerHTML = '로그인 하러 가기'
+                a.href = './login.html';
+                h1.innerHTML = '로그인이 필요합니다.'
+                document.body.appendChild(a)
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

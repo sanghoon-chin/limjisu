@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./db.js"></script>
+    <input type="text" id="username" placeholder="아이디">
+    <input type="password" id="password" placeholder="비밀번호">
+    <input type="email" id="email" placeholder="email">
+    <input type="date" id="birth">
+    <button id="register-btn">회원가입하기</button>
+    <script>
+        const username = document.querySelector('#username');
+        const password = document.querySelector('#password');
+        const email = document.querySelector('#email');
+        const date = document.querySelector('#birth');
+        db.addEventListener('success', evt => {
+            const db = evt.target.result;
+            
+            document.querySelector('#register-btn').addEventListener('click', () => {
+                if(username.value === '' || 
+                    password.value === '' || 
+                    email.value === '' || 
+                    date.value === ''){
+                        alert('값을 입력해주세요')
+                        return false
+                    }
+                const store = db.transaction('users', ["readwrite"]).objectStore('users');
+                const req2 = store.getAll()
+                const userInfo = {
+                    username: username.value,
+                    password: password.value,
+                    email: email.value,
+                    birth: date.value
+                }
+                req2.addEventListener('success', e => {
+                    db1 = e.target.result
+                    let bool = false
+                    for(let i = 0 ; i < db1.length; i++){
+                        if(username.value === db1[i].username){
+                            bool = true
+                        }
+                    }
+                    if(!bool){
+                        const req = store.add(userInfo)
+                        req.addEventListener('success', e => {
+                            alert('저장 성공')
+                            location.href = './login.html'
+                        })
+                    } else{
+                        alert('값을 다시 입력해 주세요.')
+                    }
+                })
+            })
+        })
+
+    </script>
+</body>
+</html>

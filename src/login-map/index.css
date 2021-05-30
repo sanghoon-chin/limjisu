@@ -1,0 +1,65 @@
+.Login-container{
+    width: 440px;
+    text-align: center;
+    margin: auto;
+    margin-top: 10%;
+}
+
+img{
+    width: 110px;
+    height: 110px;
+    margin-bottom: 60px;
+}
+
+.id-input, .password-input{
+    width: 410px;
+    height: 57px;
+    margin-top: 10px;
+    padding-left: 23px;
+    font-size: 17px;
+}
+
+input::placeholder {
+    font-size: 17px;
+    padding-left: 1px;
+}
+
+.msg {
+    font-size: 15px;
+    color: red;
+    float: left;
+    padding-left: 20px;
+}
+
+#Login-btn{
+    width: 440px;
+    height: 63px;
+    margin-top: 15px;
+    font-size: 18px;
+    background-color: white;
+    text-align: center;
+    cursor:pointer;
+}
+
+.wrap{
+    font-size: 13px;
+    margin-top: 10px;
+    margin-left: 28px;
+    color: #BEBEBE;
+    cursor:pointer;
+    text-align: left;
+}
+
+.wrap > span{
+    margin: 0 2px;
+}
+
+@media screen and (max-width: 768px) { 
+    .id-input, .password-input{
+        width: 410px;
+        height: 57px;
+        margin-top: 10px;
+        padding-left: 23px;
+        font-size: 17px;
+    }
+}

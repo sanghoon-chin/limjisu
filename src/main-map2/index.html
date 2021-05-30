@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div id="sidebar" class="collapsed">
+        <button id="closer"><img src="./assets/icon3.png" width="17px" height="17px"></button>
+        <div class="user-container">
+            <img src="./assets/suer-icon.png" width="41px" height="41px">
+            <span class="user-name">로그인 해주세요.</span>
+        </div>
+
+        <div class="bus-drop-down-continer">
+            <div class="bus-money">
+                <div class="title">지금까지 사용한 버스요금</div>
+                <img id="drop-down-btn" src="./assets/icon2.PNG" width="25px" height="16px">
+            </div>
+            <div class="bus-money-container">
+                <div id="bus-money-add">
+                    <template id="bus-money-section-template">
+                        <div class="bus-template">
+                            <div id="day-time"></div>
+                            <div id="bus-number-money"></div>
+                            <hr>
+                        </div>
+                    </template>
+                </div>
+                <div id="bus-money-add-number">지금까지 사용한 요금</div>
+            </div>
+                
+        </div>
+        <div class="bus-play">
+            <div class="title">이용한 버스</div>
+            <img id="drop-down-btn" src="./assets/icon2.PNG">
+            <div class="section"></div>
+        </div>
+
+
+    </div>
+    <div id="content">
+        <button><img src="./assets/btn-icon.PNG"></button>
+    </div>
+    <!-- <script src="./main-map2.js"></script> -->
+</body>
+</html>

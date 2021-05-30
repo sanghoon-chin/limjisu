@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./db.js"></script>
+    <input type="text" id="username" placeholder="아이디">
+    <input type="password" id="password" placeholder="비밀번호">
+    <button id="login-btn">로그인</button>
+    <script>
+        const username = document.querySelector('#username');
+        const password = document.querySelector('#password');
+
+        db.addEventListener('success', evt => {
+            const db = evt.target.result;
+            
+            document.querySelector('#login-btn').addEventListener('click', e => {
+                const store = db.transaction('users', ["readonly"]).objectStore('users');
+                const req = store.getAll()
+                if(username.value === '' || password.value === ''){
+                    alert('값을 입력해주세요');
+                    return false;
+                } else {
+                    req.addEventListener('success', e =>{
+                        db1 = e.target.result
+                        for(let i = 0 ; i < db1.length ; i++){
+                            if(username.value === db1[i].username && password.value === db1[i].password){
+                                alert('로그인 되었습니다.')
+                                const d = new Date();
+                                d.setMonth(d.getMonth() + 1)
+                                document.cookie = `username=${username.value}; expires=${d.toUTCString()}`;
+                                location.href = './main.html'
+                            } 
+                        }
+                    })
+                }
+            })
+        })
+
+    </script>
+</body>
+</html>
