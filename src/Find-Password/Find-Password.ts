@@ -1,3 +1,4 @@
+import './Find-Password.css'
 import db from '../db'
 
 const $: typeof document.querySelector = document.querySelector.bind(document);
@@ -39,6 +40,6 @@ db.addEventListener('success', evt => {
     })
 
     btn1.addEventListener('click', () => {
-        location.href = '../Login-map/Login-map.html';
+        location.href = './login.html';
     })
 })

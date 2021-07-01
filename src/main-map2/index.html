@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,44 +8,93 @@
     <title>Document</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
+    <script type="text/javascript" 
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=06d4ae1130753e15869f56ee195107e3&libraries=services,clusterer,drawing">
+    </script>
+    <div id="map" style="width:100%; height:100%;"></div>
+    <img src="./assets/loading.gif" id="loading-gif">
+    <div class="nav">
+        <div id="content">
+            <button id="open-btn" class="sidebar-btn"><img src="./assets/btn-icon.PNG" width="20px"
+                    height="16px"></button>
+        </div>
+        <div class="bus-search-container">
+            <div>
+                <input class="bus-area-search" type="text" placeholder="지역">
+                <div id="bus-area-Wrapper" style="border: none"></div>
+            </div>
+            <div>
+                <input class="bus-number-search" type="text" placeholder="버스 번호를 입력해 주세요.">
+                <div id="bus-num-wrapper"></div>
+            </div>
+            <button class="bus-search" data-type="search">검색</button>
+        </div>
+    </div>
+
     <div id="sidebar" class="collapsed">
-        <button id="closer"><img src="./assets/icon3.png" width="17px" height="17px"></button>
+        <div id="closes-btn">
+            <img src="./assets/icon3.png" class="sidebar-btn">
+        </div>
         <div class="user-container">
-            <img src="./assets/suer-icon.png" width="41px" height="41px">
-            <span class="user-name">로그인 해주세요.</span>
+            <div class="d-flex">
+                <img src="./assets/suer-icon.png" width="40" height="40">
+                <span class="user-name">로그인 해주세요.</span>
+            </div>
         </div>
 
-        <div class="bus-drop-down-continer">
-            <div class="bus-money">
-                <div class="title">지금까지 사용한 버스요금</div>
-                <img id="drop-down-btn" src="./assets/icon2.PNG" width="25px" height="16px">
+        <div class="bus-info-container">
+            <div class="bus-history">
+                <div></div>
+                <div>이용한 버스</div>
+                <img src="./assets/icon2.PNG" data-type="dropdown" width="25" height="16">
             </div>
-            <div class="bus-money-container">
-                <div id="bus-money-add">
-                    <template id="bus-money-section-template">
-                        <div class="bus-template">
-                            <div id="day-time"></div>
-                            <div id="bus-number-money"></div>
-                            <hr>
+            <div class="bus-history-form">
+                <template>
+                    <div class="bus-template">
+                        <div class="bus-fee"></div>
+                        <div class="bus-num"></div>
+                        <div class="bus-infor-form"></div>
+                        <div class="detail-bus-info">
+                            <div class="bus-run-area-container">
+                                <div>운행지역</div>
+                                <div>
+                                    <div id="area"></div>
+                                    <span>|</span>
+                                    <div id="stat"></div>
+                                    <img src="./assets/icon4.png" width="19px" height="12px" style="margin: 1px 0;">
+                                    <div id="last"></div>
+                                </div>
+                            </div>
+                            <div class="bus-play-time-container">
+                                <div>운행시간</div>
+                                <div>
+                                    <div>첫차<span id="start-time"></span></div>
+                                    <div>막차<span id="last-time"></span></div>
+                                </div>
+                            </div>
+                            <div class="bus-stop-time-container">
+                                <div>배차간격</div>
+                                <div>
+                                    <div id="weekday-stop-time"></div>
+                                    <div id="saturday-stop-time"></div>
+                                    <div id="sunday-stop-time"></div>
+                                </div>
+                            </div>
                         </div>
-                    </template>
-                </div>
-                <div id="bus-money-add-number">지금까지 사용한 요금</div>
+                        <div class="hr-container">
+                            <hr> 
+                        </div>
+                    </div>
+                </template>
             </div>
-                
         </div>
-        <div class="bus-play">
-            <div class="title">이용한 버스</div>
-            <img id="drop-down-btn" src="./assets/icon2.PNG">
-            <div class="section"></div>
-        </div>
-
-
     </div>
-    <div id="content">
-        <button><img src="./assets/btn-icon.PNG"></button>
+    <div class="map-type-container">
+        <span class="btnRoadmap">지도</span>
+        <span class="btnSkyview">스카이뷰</span>
     </div>
-    <!-- <script src="./main-map2.js"></script> -->
 </body>
+
 </html>

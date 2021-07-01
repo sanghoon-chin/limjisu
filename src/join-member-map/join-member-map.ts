@@ -1,3 +1,4 @@
+import './join-member-map.css'
 import db from '../db'
 
 const $: typeof document.querySelector = document.querySelector.bind(document);
@@ -56,7 +57,7 @@ db.addEventListener('success', evt => {
                     const req = store.add(userInfo)
                     req.addEventListener('success', e => {
                         alert('가입되었습니다')
-                        location.href = '../Login-map/Login-map.html'
+                        location.href = './login.html'
                     })
                 }
             } else {

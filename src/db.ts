@@ -9,7 +9,18 @@ db.addEventListener('upgradeneeded', (evt:IDBVersionChangeEvent) => {
         keyPath: 'username',
         autoIncrement: false
     });
-    store.createIndex('name', 'neam', {unique: true});
+    /**
+     * bus-number
+     * bus-fee
+     * username
+     * 
+     */
+    const store2 = db.createObjectStore('busInfo', {
+        keyPath: 'id',
+        autoIncrement: true
+    });
+    store.createIndex('username', 'username', {unique: false});
+    store2.createIndex('username', 'username', {unique: false})
 }, {once: true})
 
 export default db

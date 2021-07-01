@@ -1,4 +1,4 @@
-.Login-container{
+.login-container{
     width: 440px;
     text-align: center;
     margin: auto;
@@ -11,12 +11,12 @@ img{
     margin-bottom: 60px;
 }
 
-.id-input, .password-input{
+input{
     width: 410px;
-    height: 57px;
+    height: 56px;
     margin-top: 10px;
-    padding-left: 23px;
-    font-size: 17px;
+    padding-left: 24px;
+    font-size: 16px;
 }
 
 input::placeholder {
@@ -31,10 +31,10 @@ input::placeholder {
     padding-left: 20px;
 }
 
-#Login-btn{
+#login-btn{
     width: 440px;
-    height: 63px;
-    margin-top: 15px;
+    height: 64px;
+    margin-top: 14px;
     font-size: 18px;
     background-color: white;
     text-align: center;
@@ -42,7 +42,7 @@ input::placeholder {
 }
 
 .wrap{
-    font-size: 13px;
+    font-size: 14px;
     margin-top: 10px;
     margin-left: 28px;
     color: #BEBEBE;
@@ -57,9 +57,9 @@ input::placeholder {
 @media screen and (max-width: 768px) { 
     .id-input, .password-input{
         width: 410px;
-        height: 57px;
+        height: 56px;
         margin-top: 10px;
-        padding-left: 23px;
-        font-size: 17px;
+        padding-left: 24px;
+        font-size: 18px;
     }
 }

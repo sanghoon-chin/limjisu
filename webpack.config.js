@@ -9,7 +9,10 @@ module.exports = {
     entry: {
         index: './src/main-map/index.ts',
         index2: './src/main-map2/index.ts',
-        login: './src/login-map/index.ts'
+        login: './src/login-map/index.ts',
+        'join-member-map': './src/join-member-map/join-member-map.ts',
+        'Find-Password': './src/Find-Password/Find-Password.ts',
+        'Find-id': './src/Find-id/Find-id.ts'
     },
     devtool: 'inline-source-map',
     mode:'development',
@@ -23,7 +26,6 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    // MiniCssExtractPlugin.loader,
                     'style-loader',
                     'css-loader'
                 ]
@@ -34,27 +36,12 @@ module.exports = {
                 options: {
                     name: "assets/[name].[ext]",
                     publicPath: 'assets',
-                    // outputPath: 'assets'
                 }
             },
         ],
     },
-    optimization: {
-        runtimeChunk: {
-            name: (entrypoint) => `runtimechunk~${entrypoint.name}`
-        },
-        splitChunks: {
-            cacheGroups: {
-                vendor: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: 'vendors',
-                    chunks: 'all'
-                }
-            }
-        }
-    },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
+        extensions: ['.tsx', '.ts', '.js', '.css'],
         alias: {
             '@': path.resolve(__dirname, 'src')
         }
@@ -85,6 +72,27 @@ module.exports = {
             chunks: ['login'],
             filename: 'login.html',
         }),
+        new HtmlWebpackPlugin({
+            template: './src/join-member-map/join-member-map.html',
+            title: 'join-member-map',
+            inject: true,
+            chunks: ['join-member-map'],
+            filename: 'join-member-map.html',
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/Find-Password/Find-Password.html',
+            title: 'Find-Password',
+            inject: true,
+            chunks: ['Find-Password'],
+            filename: 'Find-Password.html',
+        }),
+        new HtmlWebpackPlugin({
+            template: './src/Find-id/Find-id.html',
+            title: 'Find-id',
+            inject: true,
+            chunks: ['Find-id'],
+            filename: 'Find-id.html',
+        }),
         new MiniCssExtractPlugin({
             filename: "[name].[contenthash].css",
             chunkFilename: "[id].[contenthash].css"
@@ -103,11 +111,6 @@ module.exports = {
         inline:true,
         hot:true,
         host: '127.0.0.1',
-        port: 4500
-    },
-    // 빌드를 위한 것
-    cache: {
-        type: 'filesystem',
-        cacheDirectory: path.resolve(__dirname, '.webpack_cache')
+        port: 5500
     },
 };

@@ -1,5 +1,5 @@
 import './index.css';
-import db from '../db'
+import db from '../db';
 
 const $: typeof document.querySelector = document.querySelector.bind(document);
 const $$: typeof document.querySelectorAll = document.querySelectorAll.bind(document);
@@ -9,7 +9,7 @@ const username = $('#username') as HTMLInputElement;
 const password = $('#password') as HTMLInputElement;
 const inputs = $$<HTMLInputElement>('.user-number > input')
 const divs = $$<HTMLDivElement>('.msg')
-const btn = $('#Login-btn') as HTMLButtonElement
+const btn = $('#login-btn') as HTMLButtonElement;
 const register = $('#register') as HTMLSpanElement;
 const findPassword = $('#find-password') as HTMLSpanElement;
 const findId = $('#find-id') as HTMLSpanElement;
@@ -28,13 +28,13 @@ userNumber.addEventListener('click', () => {
     }
 })
 register.addEventListener('click', () => {
-    location.href = '../join-member-map/join-member-map.html'
+    location.href = './join-member-map.html'
 })
- findPassword.addEventListener('click', () => {
-    location.href = '../Find-password/Find-password.html'
+findPassword.addEventListener('click', () => {
+    location.href = './Find-Password.html'
 })
  findId.addEventListener('click', () => {
-    location.href = '../Find-id/Find-id.html'
+    location.href = './Find-id.html'
 })
 
 db.addEventListener('success', evt => {
@@ -49,17 +49,20 @@ db.addEventListener('success', evt => {
         } else {
             req.addEventListener('success', e => {
                 const db1 = (e.target as IDBRequest).result;
-                for (let i = 0; i < db1.length; i++) {
-                    if (username.value === db1[i].username && password.value === db1[i].password) {
-                        alert('로그인 되었습니다.')
-                        const d = new Date();
-                        d.setMonth(d.getMonth() + 1)
-                        document.cookie = `username=${username.value}; expires=${d.toUTCString()}; path=/`;
-                        location.href = '../main-map2/main-map2.html'
-                    } else {
-                        console.log(1);
-                        alert('다시 입력해 주세요.')
-                        return false
+                if(db1.length === 0){
+                    alert('다시 입력해 주세요.')
+                } else{
+                    for (let i = 0; i < db1.length; i++) {
+                        if (username.value === db1[i].username && password.value === db1[i].password) {
+                            alert('로그인 되었습니다.')
+                            const d = new Date();
+                            d.setMonth(d.getMonth() + 1)
+                            document.cookie = `username=${username.value}; expires=${d.toUTCString()}; path=/`;
+                            location.href = './index2.html'
+                        } else {
+                            alert('다시 입력해 주세요.')
+                            return false
+                        }
                     }
                 }
             })
