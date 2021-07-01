@@ -7,9 +7,7 @@ const buildPath = path.resolve(__dirname, 'dist');
 
 module.exports = {
     entry: {
-        index: './src/main-map/index.ts',
         index2: './src/main-map2/index.ts',
-        login: './src/login-map/index.ts',
         'join-member-map': './src/join-member-map/join-member-map.ts',
         'Find-Password': './src/Find-Password/Find-Password.ts',
         'Find-id': './src/Find-id/Find-id.ts'
@@ -52,25 +50,11 @@ module.exports = {
     },
     plugins:[
         new HtmlWebpackPlugin({
-            template: './src/main-map/index.html',
-            title: 'index',
-            inject: true,
-            chunks: ['index'],
-            filename: 'index.html',
-        }),
-        new HtmlWebpackPlugin({
             template: './src/main-map2/index.html',
             title: 'index2',
             inject: true,
             chunks: ['index2'],
             filename: 'index2.html',
-        }),
-        new HtmlWebpackPlugin({
-            template: './src/login-map/index.html',
-            title: 'login',
-            inject: true,
-            chunks: ['login'],
-            filename: 'login.html',
         }),
         new HtmlWebpackPlugin({
             template: './src/join-member-map/join-member-map.html',
@@ -111,6 +95,21 @@ module.exports = {
         inline:true,
         hot:true,
         host: '127.0.0.1',
-        port: 5500
-    },
+        port: 5500,
+        https: true,
+        proxy: {
+            '/api1': {
+                target: 'http://openapi.tago.go.kr/openapi/service/',
+                pathRewrite: { '^/api1': '' },
+                changeOrigin: true,
+                secure: true
+            },
+            '/api2': {
+                target: 'http://apis.data.go.kr/6410000/',
+                pathRewrite: { '^/api2': '' },
+                changeOrigin: true,
+                secure: true
+            },
+        },
+    }
 };

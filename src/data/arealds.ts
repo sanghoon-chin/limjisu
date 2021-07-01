@@ -3,12 +3,12 @@ const cityList = `수원시,용인시,성남시,부천시,화성시,안산시,�
 const parse_cityList = cityList.split(',').sort();
 parse_cityList.push('서울특별시', '인천광역시');
 
-interface CITYINFO {
+export interface CITYINFO {
     cityName: string;
     cityId: string;
 }
 
-export const areaIds:CITYINFO[] = parse_cityList.map((city, idx) => ({
+export const areaIds: CITYINFO[] = parse_cityList.map((city, idx) => ({
     cityName: city, 
-    cityId: (idx+1 < 10) ? ('0' + (idx + 1)) : (idx+1).toString()
+    cityId: String(idx + 1).padStart(2, '0')
 }));

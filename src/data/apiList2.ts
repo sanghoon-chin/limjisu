@@ -1,6 +1,5 @@
 const url = new Map<string, string>();
-
-const origin:string = `http://apis.data.go.kr/6410000/`;
+const origin:string = `/api2`;
 
 /**
  * @params keyword number ex)30    

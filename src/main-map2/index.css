@@ -60,28 +60,28 @@ html, body {
   outline: none;
 }
 
-.nav #bus-area-Wrapper{
+.nav #bus-area-wrapper{
   width: 100%;
   transition: all .2s;
   border-radius: 5px;
   z-index: 1000;
 }
 
-.nav #bus-area-Wrapper > div{
+.nav #bus-area-wrapper > div{
   padding: 5px 0;
   transition: all .2s;
   cursor: pointer;
 }
 
-.nav #bus-area-Wrapper > div:hover{
+.nav #bus-area-wrapper > div:hover{
   background-color: rgba(0, 0,0, .1);
 }
 
-#bus-area-Wrapper::-webkit-scrollbar{
+#bus-area-wrapper::-webkit-scrollbar{
   width: 6px;
 }
 
-#bus-area-Wrapper::-webkit-scrollbar-thumb{
+#bus-area-wrapper::-webkit-scrollbar-thumb{
   height: 17%;
   background-color: #10e449;
   /* 스크롤바 둥글게 설정 */
@@ -89,7 +89,7 @@ html, body {
 }
 
 /* 스크롤바 뒷 배경 설정*/
-#bus-area-Wrapper::-webkit-scrollbar-track{
+#bus-area-wrapper::-webkit-scrollbar-track{
   background-color: rgba(0,0,0,0);
 }
 
@@ -107,7 +107,7 @@ html, body {
   outline: none;
 }
 
-.nav #bus-area-Wrapper, 
+.nav #bus-area-wrapper, 
 .nav #bus-num-wrapper{
   text-align: center;
   font-size: 13px;
@@ -409,7 +409,7 @@ html, body {
   display: none;
 }
 
-.push-but{
+.active{
   background-color: #10e449;
   color: white;
 }
